@@ -22,9 +22,9 @@ function addMessage() {
 <template>
   <form method="post" @submit.prevent="addMessage"
     class="mt-6 w-full max-w-auto rounded bg-gray-100 p-3.5 flex flex-row items-center justify-between">
-    <div class="mb-4">
+    <div class="mb-4 mx-4 flex  w-80">
       <input id="message" name="message" placeholder="Digite sua mensagem" v-model="message" type="text"
-        class="mt-1 flex rounded border border-gray-300 p-1.5 focus:border-teal-500 focus:ring focus:ring-teal-500 focus:ring-opacity-50" />
+        class="mt-1 w-80 flex rounded border border-gray-300 p-1.5 focus:border-teal-500 focus:ring focus:ring-teal-500 focus:ring-opacity-50" />
     </div>
     <button type="submit" class="rounded flex self-end bg-purple-500 px-4 py-2 text-white hover:bg-teal-600 mb-4">
       Enviar
