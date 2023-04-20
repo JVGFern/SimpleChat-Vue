@@ -28,11 +28,12 @@ watch(() => chat.messages, () => {
           <p class="bg-gray-200 rounded px-2.5 py-1">Olá em que posso lhe ajudar?</p>
         </div>
         <div v-for="message in chat.messages" :key="message.id"
-          :class="{ 'flex flex-col items-end self-end mb-4': message.from === 'user', 'flex flex-col self-start mb-4': message.from !== 'user' }">
-          <div class="text-sm font-semibold mb-px">{{ message.from === 'user' ? 'Você diz:' : 'Atendente diz:' }}</div>
-          <p
-            class="bg-purple-200 rounded px-2.5 py-1 break-all max-w-md">
+          :class="{ 'flex flex-col items-end self-end mb-4': message.from ===  true, 'flex flex-col self-start mb-4': message.from !==  true }">
+          <div class="text-sm font-semibold mb-px">{{ message.from === true ? 'Você diz:' : 'Atendente diz:' }}</div>
+          <p 
+          :class="{ 'bg-purple-300 rounded px-2.5 py-1 break-all max-w-md': message.from ===  true, 'bg-gray-300 rounded px-2.5 py-1 break-all max-w-md': message.from !==  true }">
             {{ message.text }}</p>
+            
         </div>
       </main>
       <footer>

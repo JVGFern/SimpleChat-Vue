@@ -9,5 +9,8 @@ export const chat = reactive({
   addMessage(newMessage) {
     this.messages.push(newMessage);
   },
+  clearMessages() {
+    this.messages = [];
+  },
   
 });

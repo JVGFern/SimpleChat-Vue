@@ -4,20 +4,31 @@ import { chat, generateId } from "../message";
 
 const message = ref("");
 const errorMessage = ref("");
+const from = ref(true);
 
 function addMessage() {
   if (message.value !== "") {
-    chat.addMessage({
-      id: generateId(),
-      text: message.value,
-      from: "user",
-    });
+    if (message.value === "/clear") {
+      chat.clearMessages(); 
+    } else {
+      chat.addMessage({
+        id: generateId(),
+        text: message.value,
+        from: from.value,
+      });
+    }
     errorMessage.value = "";
     message.value = "";
   } else {
     errorMessage.value = "Preencha todos os campos corretamente";
   }
 }
+
+function toggleFrom() {
+  from.value = !from.value;
+}
+
+
 </script>
 <template>
   <form method="post" @submit.prevent="addMessage"
@@ -26,6 +37,9 @@ function addMessage() {
       <input id="message" name="message" placeholder="Digite sua mensagem" v-model="message" type="text"
         class="mt-1 w-80 flex rounded border border-gray-300 p-1.5 focus:border-teal-500 focus:ring focus:ring-teal-500 focus:ring-opacity-50" />
     </div>
+    <button type="button" class="rounded flex self-end bg-purple-500 px-4 py-2 text-white hover:bg-teal-600 mb-4" @click="toggleFrom">
+      {{ from ? 'Enviar como atentende' : 'Enviar como usuário' }}
+    </button>
     <button type="submit" class="rounded flex self-end bg-purple-500 px-4 py-2 text-white hover:bg-teal-600 mb-4">
       Enviar
     </button>
